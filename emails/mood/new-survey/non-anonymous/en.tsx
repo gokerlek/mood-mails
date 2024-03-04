@@ -6,20 +6,23 @@ import {
     Html,
     Img,
     Preview,
-    Markdown,  Button,
+    Markdown, Text, Button,
 } from "@react-email/components";
 import * as React from "react";
 import {Tailwind} from "@react-email/tailwind";
-import {MailHead} from "../../../components/mail-head";
-import {FooterEn} from "../../../components/footer-en";
+import {MailHead} from "../../../../components/mail-head";
+import {FooterEn} from "../../../../components/footer-en";
+import {NonAnonymousEn} from "../../../../components/non-anonymous-en";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'You have a new survey!',
+    info: `%%surveyname%% is live!`,
+    button: 'Start Survey',
+    survey_description: '%%surveyndecription%%',
+    description: `All you have to do is take a few minutes to fill out our survey, where you will participate **100% anonymously!**`,
 }
 
-const {heading, description, button} = text;
+const {heading, info,survey_description, description, button} = text;
 
 export const En=() => (
     <Html>
@@ -37,6 +40,16 @@ export const En=() => (
                     <Img src={'https://app.moodivation.net/mail/moodivation.png'}   alt="Modivation" className='w-[240px]' />
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
+
+                    <Text>
+                        {info}
+                    </Text>
+
+                    <NonAnonymousEn />
+
+                    <Text>
+                        {survey_description}
+                    </Text>
 
                     <Markdown
                         markdownCustomStyles={{

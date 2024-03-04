@@ -6,20 +6,24 @@ import {
     Html,
     Img,
     Preview,
-    Markdown,  Button,
+    Markdown,  Button, 
 } from "@react-email/components";
 import * as React from "react";
 import {Tailwind} from "@react-email/tailwind";
-import {MailHead} from "../../../components/mail-head";
-import {FooterEn} from "../../../components/footer-en";
+import {MailHead} from "../../../../components/mail-head";
+import {FooterEn} from "../../../../components/footer-en";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'Your Feedback Got Responded!',
+    info: `
+You've got a new reply to your feedback you sent on %%date%%
+
+Keep in mind that your manager doesn’t know who sent anonymous feedback. You can reply anonymously.
+`,
+    button: 'View Your Feedback',
 }
 
-const {heading, description, button} = text;
+const {heading, info, button} = text;
 
 export const En=() => (
     <Html>
@@ -38,17 +42,15 @@ export const En=() => (
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
 
-                    <Markdown
-                        markdownCustomStyles={{
-                            p: {
-                                color: "#212529",
-                                fontSize: "14px",
-                                marginTop: "24px",
-                                lineHeight: "1.5",
-                            },
-                        }}
-                    >
-                        {description}
+                    <Markdown markdownCustomStyles={{
+                        p: {
+                            color: "#212529",
+                            fontSize: "14px",
+                            margin: "24px 0",
+                            lineHeight: "1.5",
+                        },
+                    }}>
+                        {info}
                     </Markdown>
 
                     <Button href="%%link%%" className='bg-[#92B6B1] text-white px-6 py-4 rounded-md mt-6'>{button}</Button>

@@ -10,18 +10,18 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 import {Tailwind} from "@react-email/tailwind";
-import {MailHead} from "../../../components/mail-head";
-import {FooterEn} from "../../../components/footer-en";
+import {MailHead} from "../../../../components/mail-head";
+import {FooterTr} from "../../../../components/footer-tr";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'Okunmamış Geri Bildirimin Var',
+    info: `**(%%date%%)** tarihinde cevaplanan geri bildirimini hala okumadın! Görüntülemek için aşağıdaki linkte tıkla.`,
+    button: 'Geri Bildirimi Görüntüle',
 }
 
-const {heading, description, button} = text;
+const {heading, info, button} = text;
 
-export const En=() => (
+export const Tr=() => (
     <Html>
         <Tailwind >
 
@@ -38,27 +38,25 @@ export const En=() => (
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
 
-                    <Markdown
-                        markdownCustomStyles={{
-                            p: {
-                                color: "#212529",
-                                fontSize: "14px",
-                                marginTop: "24px",
-                                lineHeight: "1.5",
-                            },
-                        }}
-                    >
-                        {description}
+                    <Markdown markdownCustomStyles={{
+                        p: {
+                            color: "#212529",
+                            fontSize: "14px",
+                            marginTop: "24px",
+                            lineHeight: "1.5",
+                        },
+                    }}>
+                        {info}
                     </Markdown>
 
                     <Button href="%%link%%" className='bg-[#92B6B1] text-white px-6 py-4 rounded-md mt-6'>{button}</Button>
 
-                    <FooterEn/>
+                    <FooterTr/>
                 </Container>
             </Body>
         </Tailwind>
     </Html>
 );
 
-export default En;
+export default Tr;
 

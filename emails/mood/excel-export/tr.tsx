@@ -6,7 +6,7 @@ import {
     Html,
     Img,
     Preview,
-    Markdown, Font, Button,
+    Markdown,  Button,
 } from "@react-email/components";
 import * as React from "react";
 import {Tailwind} from "@react-email/tailwind";
@@ -37,7 +37,7 @@ export const Tr = () => (
             <Container className='px-5 sm:px-10 mx-auto bg-white py-8 max-w-3xl rounded-lg'>
                 <Img src={'https://app.moodivation.net/mail/moodivation.png'}   alt="Modivation" className='w-[240px]' />
 
-                <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6'>{heading}</Heading>
+                <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
 
                 <Markdown
                      markdownCustomStyles={{

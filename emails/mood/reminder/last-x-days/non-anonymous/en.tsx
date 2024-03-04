@@ -6,20 +6,23 @@ import {
     Html,
     Img,
     Preview,
-    Markdown,  Button,
+    Markdown, Button,
 } from "@react-email/components";
 import * as React from "react";
 import {Tailwind} from "@react-email/tailwind";
-import {MailHead} from "../../../components/mail-head";
-import {FooterEn} from "../../../components/footer-en";
+import {MailHead} from "../../../../../components/mail-head";
+import {FooterEn} from "../../../../../components/footer-en";
+import {NonAnonymousEn} from "../../../../../components/non-anonymous-en";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'Last (%%day%%) Days',
+    info: `**Last %%day%% days** until the %%surveyname%% ends!`,
+    button: 'Start Survey',
+    survey_description: 'Your thoughts and ideas are very valuable to us, we expect your participation before our survey ends on **(%%date%%)**',
+    description: `All you have to do is take a few minutes to fill out our survey, where you will participate **100% anonymously!**`,
 }
 
-const {heading, description, button} = text;
+const {heading, info,survey_description, description, button} = text;
 
 export const En=() => (
     <Html>
@@ -37,6 +40,30 @@ export const En=() => (
                     <Img src={'https://app.moodivation.net/mail/moodivation.png'}   alt="Modivation" className='w-[240px]' />
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
+
+                    <Markdown markdownCustomStyles={{
+                        p: {
+                            color: "#212529",
+                            fontSize: "14px",
+                            marginTop: "24px",
+                            lineHeight: "1.5",
+                        },
+                    }}>
+                        {info}
+                    </Markdown>
+
+                    <NonAnonymousEn />
+
+                    <Markdown markdownCustomStyles={{
+                        p: {
+                            color: "#212529",
+                            fontSize: "14px",
+                            marginTop: "24px",
+                            lineHeight: "1.5",
+                        },
+                    }}>
+                        {survey_description}
+                    </Markdown>
 
                     <Markdown
                         markdownCustomStyles={{

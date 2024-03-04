@@ -1,25 +1,18 @@
-import {
-    Body,
-    Container,
-    Head,
-    Heading,
-    Html,
-    Img,
-    Preview,
-    Markdown,  Button,
-} from "@react-email/components";
-import * as React from "react";
+import {Body, Button, Container, Head, Heading, Html, Img,  Preview, Text} from "@react-email/components";
 import {Tailwind} from "@react-email/tailwind";
 import {MailHead} from "../../../components/mail-head";
+import {NonAnonymousEn} from "../../../components/non-anonymous-en";
 import {FooterEn} from "../../../components/footer-en";
+import * as React from "react";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'Your Exit Survey is Ready!',
+    info: "We look forward to your participation in this survey!",
+    button: 'Start Survey',
+    survey_description: '%%surveydescription%%',
 }
 
-const {heading, description, button} = text;
+const {heading, info,survey_description,  button} = text;
 
 export const En=() => (
     <Html>
@@ -38,18 +31,15 @@ export const En=() => (
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
 
-                    <Markdown
-                        markdownCustomStyles={{
-                            p: {
-                                color: "#212529",
-                                fontSize: "14px",
-                                marginTop: "24px",
-                                lineHeight: "1.5",
-                            },
-                        }}
-                    >
-                        {description}
-                    </Markdown>
+                    <Text>
+                        {info}
+                    </Text>
+
+                    <NonAnonymousEn />
+
+                    <Text>
+                        {survey_description}
+                    </Text>
 
                     <Button href="%%link%%" className='bg-[#92B6B1] text-white px-6 py-4 rounded-md mt-6'>{button}</Button>
 
@@ -61,4 +51,3 @@ export const En=() => (
 );
 
 export default En;
-

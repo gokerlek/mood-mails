@@ -1,27 +1,24 @@
-import {
-    Body,
-    Container,
-    Head,
-    Heading,
-    Html,
-    Img,
-    Preview,
-    Markdown,  Button,
-} from "@react-email/components";
-import * as React from "react";
+import {Body, Button, Container, Head, Heading, Html, Img, Markdown, Preview, Text} from "@react-email/components";
 import {Tailwind} from "@react-email/tailwind";
-import {MailHead} from "../../../components/mail-head";
-import {FooterEn} from "../../../components/footer-en";
+import {MailHead} from "../../../../components/mail-head";
+import {NonAnonymousTr} from "../../../../components/non-anonymous-tr";
+import {FooterTr} from "../../../../components/footer-tr";
+import * as React from "react";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'İşten Çıkış Anketin Yanıtlarını Bekliyor!',
+    info: "İşten Çıkış Anketine Katılımını Bekliyoruz",
+    description: `
+İşten çıkış anketini yanıtlamayı unutma!
+
+Şirketimize verdiğin katkılar için teşekkür ederiz.
+    `,
+    button: 'Ankete Başla',
 }
 
-const {heading, description, button} = text;
+const {heading, info,description,  button} = text;
 
-export const En=() => (
+export const Tr=() => (
     <Html>
         <Tailwind >
 
@@ -38,6 +35,12 @@ export const En=() => (
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
 
+                    <Text>
+                        {info}
+                    </Text>
+
+                    <NonAnonymousTr />
+
                     <Markdown
                         markdownCustomStyles={{
                             p: {
@@ -51,14 +54,14 @@ export const En=() => (
                         {description}
                     </Markdown>
 
+
                     <Button href="%%link%%" className='bg-[#92B6B1] text-white px-6 py-4 rounded-md mt-6'>{button}</Button>
 
-                    <FooterEn/>
+                    <FooterTr/>
                 </Container>
             </Body>
         </Tailwind>
     </Html>
 );
 
-export default En;
-
+export default Tr;

@@ -6,22 +6,25 @@ import {
     Html,
     Img,
     Preview,
-    Markdown,  Button,
+    Markdown, Text, Button,
 } from "@react-email/components";
 import * as React from "react";
 import {Tailwind} from "@react-email/tailwind";
-import {MailHead} from "../../../components/mail-head";
-import {FooterEn} from "../../../components/footer-en";
+import {MailHead} from "../../../../components/mail-head";
+import {FooterTr} from "../../../../components/footer-tr";
+import {NonAnonymousTr} from "../../../../components/non-anonymous-tr";
 
 export const text = {
-    heading: '%%reportname%% Report is Ready!',
-    description: `**%%surveyname%%** report has been prepared with the filers you specified. Click below to download your report.`,
-    button: 'Download Report',
+    heading: 'Yeni bir anketin var!',
+    info: `%%surveyname%% yayında!`,
+    button: 'Ankete Başla',
+    survey_description: '%%surveyndecription%%',
+    description: `**%100 Anonim** olarak katılacağın bu ankete sadece birkaç dakikanı ayırman yeterli!`,
 }
 
-const {heading, description, button} = text;
+const {heading, info,survey_description, description, button} = text;
 
-export const En=() => (
+export const Tr=() => (
     <Html>
         <Tailwind >
 
@@ -38,6 +41,16 @@ export const En=() => (
 
                     <Heading className='sm:text-2xl text-lg font-semibold sm:mt-20 mt-12 sm:mb-12 mb-6 text-gray-800'>{heading}</Heading>
 
+                    <Text>
+                        {info}
+                    </Text>
+
+                    <NonAnonymousTr />
+
+                    <Text>
+                        {survey_description}
+                    </Text>
+
                     <Markdown
                         markdownCustomStyles={{
                             p: {
@@ -53,12 +66,12 @@ export const En=() => (
 
                     <Button href="%%link%%" className='bg-[#92B6B1] text-white px-6 py-4 rounded-md mt-6'>{button}</Button>
 
-                    <FooterEn/>
+                    <FooterTr/>
                 </Container>
             </Body>
         </Tailwind>
     </Html>
 );
 
-export default En;
+export default Tr;
 
